@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MENS.CLUB — Барбершоп Воронеж | +7 (473) 300-37-37</title>
+<meta name="description" content="MENS.CLUB — мужские стрижки, бритьё и уход в Воронеже. Ул. Красноармейская, 17. +7 (473) 300-37-37">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:    #0a0a0a;
+  --black2:   #111111;
+  --black3:   #1a1a1a;
+  --red:      #c0392b;
+  --red2:     #e74c3c;
+  --amber:    #f5a623;
+  --white:    #f0ece4;
+  --gray:     #888;
+  --gray2:    #444;
+  --sidebar-w: 230px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Noise grain */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.3;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ══ SIDEBAR ══ */
+.sidebar {
+  position: fixed; left: 0; top: 0;
+  width: var(--sidebar-w); height: 100vh;
+  background: var(--black2);
+  border-right: 1px solid #1e1e1e;
+  display: flex; flex-direction: column;
+  z-index: 100; overflow-y: auto;
+}
+
+.sidebar-logo {
+  padding: 28px 22px 20px;
+  border-bottom: 1px solid #1e1e1e;
+  flex-shrink: 0;
+}
+
+.sidebar-logo .brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px; font-weight: 800;
+  letter-spacing: 4px; text-transform: uppercase; line-height: 1;
+}
+
+.sidebar-logo .brand em { color: var(--amber); font-style: normal; }
+
+.sidebar-logo .tagline {
+  font-size: 10px; letter-spacing: 2.5px;
+  color: var(--gray); text-transform: uppercase; margin-top: 5px;
+}
+
+.sidebar-nav { padding: 18px 0; flex: 1; }
+
+.sidebar-nav a {
+  display: flex; align-items: center; gap: 11px;
+  padding: 12px 22px;
+  color: var(--gray);
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+  border-left: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+  color: var(--white);
+  background: rgba(245,166,35,0.06);
+  border-left-color: var(--amber);
+}
+
+.nav-icon { width: 15px; text-align: center; font-size: 13px; opacity: 0.6; }
+
+/* Social icons in sidebar */
+.sidebar-socials {
+  display: flex; gap: 7px;
+  padding: 0 16px 16px;
+}
+
+.soc-btn {
+  flex: 1; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid #222; background: transparent; color: var(--gray);
+  cursor: pointer; transition: all 0.2s;
+}
+
+.soc-btn svg { width: 15px; height: 15px; fill: currentColor; }
+.soc-btn.tg:hover  { color: #29B5E8; border-color: #29B5E8; background: rgba(41,181,232,0.06); }
+.soc-btn.wa:hover  { color: #25D366; border-color: #25D366; background: rgba(37,211,102,0.06); }
+.soc-btn.vk:hover  { color: #4C75A3; border-color: #4C75A3; background: rgba(76,117,163,0.06); }
+
+.sidebar-hours {
+  padding: 16px 22px 24px;
+  border-top: 1px solid #1e1e1e;
+  flex-shrink: 0;
+}
+
+.sidebar-hours .h-label {
+  font-size: 9px; letter-spacing: 2.5px;
+  color: var(--gray); text-transform: uppercase; margin-bottom: 5px;
+}
+
+.sidebar-hours .h-val { font-size: 12px; color: var(--white); font-weight: 500; }
+
+/* ══ MAIN ══ */
+.main { margin-left: var(--sidebar-w); }
+
+/* ══ TOPBAR ══ */
+.topbar {
+  position: sticky; top: 0;
+  background: rgba(10,10,10,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1a1a00;
+  padding: 0 36px; height: 62px;
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 50;
+}
+
+.topbar-left {
+  font-size: 11px; letter-spacing: 3px;
+  color: var(--gray); text-transform: uppercase;
+}
+
+.topbar-left em { color: var(--amber); font-style: normal; }
+
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+
+.btn-call {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--gray2); background: transparent; color: var(--white);
+  font-family: 'Barlow', sans-serif; font-size: 12px;
+  letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-call:hover { border-color: var(--white); background: rgba(255,255,255,0.04); }
+
+.dot {
+  width: 7px; height: 7px;
+  background: var(--red2); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.5; transform:scale(.8); }
+}
+
+.btn-book {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 22px;
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow', sans-serif; font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+  border: none; cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  transition: background 0.2s;
+}
+
+.btn-book:hover { background: var(--red2); }
+
+/* ══ HERO ══ */
+.hero {
+  position: relative;
+  padding: 70px 40px 80px;
+  min-height: calc(100vh - 62px);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 70% at 50% 40%, rgba(245,166,35,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(192,57,43,0.08) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px);
+}
+
+.hero-num {
+  position: absolute; right: 40px; top: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 160px; font-weight: 800;
+  color: rgba(245,166,35,0.04); line-height: 1;
+  pointer-events: none; user-select: none; letter-spacing: -6px;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 680px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── Neon sign ── */
+.neon-sign {
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  padding: 24px 44px 20px;
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.neon-sign::before {
+  content: '';
+  position: absolute; inset: -16px;
+  background: radial-gradient(ellipse 85% 70% at 50% 50%,
+    rgba(245,130,0,0.07) 0%, rgba(192,57,43,0.04) 40%, transparent 75%);
+  animation: ambientPulse 2.4s ease-in-out infinite alternate;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@keyframes ambientPulse {
+  from { opacity:.6; transform:scale(.96); }
+  to   { opacity:1;  transform:scale(1.04); }
+}
+
+.neon-top {
+  font-family: 'Satisfy', cursive;
+  font-size: 26px; color: #f5a623;
+  text-shadow: 0 0 4px rgba(255,255,255,.6), 0 0 10px #f5a623,
+               0 0 22px rgba(245,166,35,.6), 0 0 38px rgba(255,107,0,.35);
+  animation: neonFlicker1 3.5s ease-in-out infinite alternate;
+  letter-spacing: 2px; position: relative; z-index: 1;
+}
+
+.neon-main {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(64px, 10vw, 96px);
+  font-weight: 800; letter-spacing: 8px; color: #ffffff;
+  text-shadow: 0 0 5px rgba(255,255,255,.5), 0 0 14px rgba(255,255,255,.35),
+               0 0 30px rgba(255,200,150,.3), 0 0 52px rgba(245,130,0,.2);
+  animation: neonFlicker2 4s ease-in-out infinite alternate;
+  line-height: 1; position: relative; z-index: 1; text-transform: uppercase;
+}
+
+.neon-bottom {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px; font-weight: 700; letter-spacing: 10px; color: #f5a623;
+  text-shadow: 0 0 4px rgba(255,255,255,.6), 0 0 10px #f5a623,
+               0 0 22px rgba(245,166,35,.6), 0 0 38px rgba(255,107,0,.35);
+  animation: neonFlicker1 3.5s 0.8s ease-in-out infinite alternate;
+  position: relative; z-index: 1;
+}
+
+@keyframes neonFlicker1 {
+  0%   { opacity:.9;  text-shadow:0 0 4px rgba(255,255,255,.5),0 0 10px #f5a623,0 0 22px rgba(245,166,35,.5),0 0 38px rgba(255,107,0,.3); }
+  20%  { opacity:.75; text-shadow:0 0 3px rgba(255,255,255,.3),0 0 7px #f5a623,0 0 14px rgba(245,166,35,.35); }
+  40%  { opacity:.9;  text-shadow:0 0 4px rgba(255,255,255,.5),0 0 10px #f5a623,0 0 22px rgba(245,166,35,.5),0 0 38px rgba(255,107,0,.3); }
+  100% { opacity:.92; text-shadow:0 0 5px rgba(255,255,255,.55),0 0 12px #f5a623,0 0 26px rgba(245,166,35,.55),0 0 44px rgba(255,107,0,.32); }
+}
+
+@keyframes neonFlicker2 {
+  0%   { text-shadow:0 0 5px rgba(255,255,255,.45),0 0 14px rgba(255,255,255,.28),0 0 30px rgba(255,200,150,.22),0 0 50px rgba(245,130,0,.18); }
+  25%  { text-shadow:0 0 3px rgba(255,255,255,.3),0 0 9px rgba(255,255,255,.18),0 0 18px rgba(255,200,150,.14); }
+  50%  { text-shadow:0 0 5px rgba(255,255,255,.45),0 0 14px rgba(255,255,255,.28),0 0 30px rgba(255,200,150,.22),0 0 50px rgba(245,130,0,.18); }
+  100% { text-shadow:0 0 7px rgba(255,255,255,.5),0 0 18px rgba(255,255,255,.32),0 0 38px rgba(255,200,150,.26),0 0 60px rgba(245,130,0,.2); }
+}
+
+.hero-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); line-height: 1.7;
+  max-width: 460px; margin-bottom: 32px;
+}
+
+.hero-cta-wrap { margin-bottom: 0; }
+
+.btn-hero {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 36px;
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  border: none; cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  transition: background 0.2s;
+}
+
+.btn-hero:hover { background: var(--red2); }
+
+.hero-stats {
+  display: flex; gap: 0;
+  margin-top: 44px; padding-top: 28px;
+  border-top: 1px solid #222;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-stat {
+  padding: 0 36px;
+  border-right: 1px solid #2a2a2a;
+}
+
+.hero-stat:first-child { padding-left: 0; }
+.hero-stat:last-child  { border-right: none; }
+
+.stat-n {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 34px; font-weight: 700; letter-spacing: 1px;
+  color: var(--white); line-height: 1;
+}
+
+.stat-l {
+  display: block;
+  font-size: 11px; color: var(--gray); letter-spacing: 1px; margin-top: 3px;
+}
+
+/* ══ SECTION COMMON ══ */
+section { padding: 60px 40px; border-top: 1px solid #1a1a1a; }
+
+.s-label {
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--amber); text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.s-label::before {
+  content: ''; display: block;
+  width: 20px; height: 1px; background: var(--amber);
+}
+
+.s-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px); font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1px; line-height: 1;
+  margin-bottom: 36px;
+}
+
+/* ══ SERVICES ══ */
+#services { background: var(--black2); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: #1e1e1e;
+  border: 1px solid #1e1e1e;
+}
+
+.svc {
+  background: var(--black2);
+  padding: 26px 26px;
+  position: relative; transition: background 0.2s; cursor: default;
+}
+
+.svc:hover { background: var(--black3); }
+
+.svc::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--amber); transition: width 0.3s;
+}
+
+.svc:hover::after { width: 100%; }
+
+.svc-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.svc-desc { font-size: 12px; color: var(--gray); line-height: 1.5; margin-bottom: 18px; }
+
+.svc-meta { display: flex; justify-content: space-between; align-items: baseline; }
+
+.svc-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px; font-weight: 700; color: var(--amber);
+}
+
+.svc-time { font-size: 11px; color: var(--gray); letter-spacing: 1px; }
+
+/* ══ CALCULATOR ══ */
+#calculator { background: var(--black); }
+
+.calc-box {
+  background: var(--black2);
+  border: 1px solid #222; padding: 36px;
+  position: relative; overflow: hidden;
+}
+
+.calc-box::before {
+  content: 'CALC';
+  position: absolute; right: 24px; top: 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 72px; font-weight: 800;
+  color: rgba(255,255,255,0.02); pointer-events: none;
+}
+
+.calc-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 9px; margin-bottom: 24px;
+}
+
+.calc-item {
+  display: flex; align-items: center; gap: 11px;
+  padding: 13px 15px;
+  border: 1px solid #2a2a2a; background: var(--black);
+  cursor: pointer; transition: all 0.15s; user-select: none;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+
+.calc-item:hover { border-color: #444; }
+
+.calc-item.selected {
+  border-color: var(--amber);
+  background: rgba(245,166,35,0.06);
+}
+
+.calc-check {
+  width: 17px; height: 17px;
+  border: 1px solid #333;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--amber); flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.calc-item.selected .calc-check {
+  background: var(--amber); border-color: var(--amber); color: #000;
+}
+
+.calc-item-name { flex: 1; font-size: 13px; font-weight: 500; }
+
+.calc-item-price { font-size: 14px; color: var(--gray); }
+.calc-item.selected .calc-item-price { color: var(--amber); }
+
+.calc-total {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 18px; border-top: 1px solid #222;
+}
+
+.calc-total-label {
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--gray); text-transform: uppercase;
+}
+
+.calc-total-sum {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 48px; font-weight: 800; color: var(--white); line-height: 1;
+}
+
+.calc-total-sum span { color: var(--amber); font-size: 28px; }
+
+/* ══ TEAM ══ */
+#team { background: var(--black2); }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px; background: #1a1a1a;
+}
+
+.team-card { background: var(--black2); overflow: hidden; cursor: pointer; }
+
+.team-photo {
+  width: 100%; aspect-ratio: 3/4;
+  background: var(--black3);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+
+.team-photo-icon { font-size: 56px; opacity: 0.12; }
+
+.team-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(192,57,43,0.28) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.3s;
+}
+
+.team-card:hover .team-photo::after { opacity: 1; }
+
+.team-info {
+  padding: 16px 18px;
+  border-top: 2px solid var(--amber);
+}
+
+.team-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.team-role { font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+
+.team-exp { margin-top: 8px; font-size: 11px; color: var(--amber); letter-spacing: 1px; }
+
+/* ══ BOOKING ══ */
+#booking { background: var(--black2); }
+
+.booking-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; background: #1a1a1a;
+}
+
+.booking-col { background: var(--black); padding: 30px; }
+
+.booking-col-title {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 18px;
+  padding-bottom: 12px; border-bottom: 1px solid #1e1e1e;
+}
+
+.master-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 7px; margin-bottom: 22px;
+}
+
+.master-btn-sel {
+  padding: 13px 10px;
+  border: 1px solid #2a2a2a; background: var(--black2);
+  color: var(--gray);
+  font-family: 'Barlow', sans-serif; font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+  text-align: center; transition: all 0.15s;
+}
+
+.master-btn-sel:hover { border-color: #555; color: var(--white); }
+
+.master-btn-sel.active {
+  border-color: var(--amber);
+  background: rgba(245,166,35,0.08);
+  color: var(--white);
+}
+
+.form-group { margin-bottom: 14px; }
+
+.form-label {
+  display: block; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 7px;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--black2); border: 1px solid #2a2a2a;
+  color: var(--white); padding: 11px 14px;
+  font-family: 'Barlow', sans-serif; font-size: 14px;
+  outline: none; transition: border-color 0.2s;
+  appearance: none;
+}
+
+.form-input:focus { border-color: var(--amber); }
+
+.time-slots {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 5px; margin-top: 7px;
+}
+
+.time-slot {
+  padding: 9px 4px;
+  border: 1px solid #2a2a2a; background: var(--black2);
+  color: var(--gray); font-size: 11px; text-align: center;
+  cursor: pointer; transition: all 0.15s;
+  font-family: 'Barlow', sans-serif;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+
+.time-slot:hover { border-color: #555; color: var(--white); }
+
+.time-slot.active {
+  border-color: var(--amber);
+  background: rgba(245,166,35,0.1);
+  color: var(--white);
+}
+
+.time-slot.taken {
+  opacity: 0.22; cursor: not-allowed; text-decoration: line-through;
+}
+
+.btn-submit {
+  width: 100%; padding: 15px;
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+  border: none; cursor: pointer; margin-top: 22px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  transition: background 0.2s; display: block; text-align: center;
+}
+
+.btn-submit:hover { background: var(--red2); }
+
+/* ══ PRODUCTS ══ */
+#products { background: var(--black); }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px; background: #1a1a1a;
+}
+
+.prod-card { background: var(--black2); overflow: hidden; }
+
+.prod-img {
+  width: 100%; aspect-ratio: 1;
+  background: var(--black3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 52px; opacity: 0.18;
+  transition: opacity 0.2s;
+}
+
+.prod-card:hover .prod-img { opacity: 0.28; }
+
+.prod-info { padding: 18px 18px; }
+
+.prod-brand {
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--amber); text-transform: uppercase; margin-bottom: 4px;
+}
+
+.prod-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 700;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+
+.prod-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 700; color: var(--white);
+}
+
+/* ══ CONTACTS ══ */
+#contacts { background: var(--black2); }
+
+.contacts-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; background: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.contacts-col { background: var(--black); padding: 30px; }
+
+.c-label {
+  font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gray); margin-bottom: 10px;
+}
+
+.c-city {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px; font-weight: 800;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+
+.c-street { font-size: 14px; color: var(--gray); margin-bottom: 22px; }
+
+.c-phone {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--amber); letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.c-phone:hover { color: #ffc14d; }
+
+.hours-list { display: flex; flex-direction: column; gap: 0; }
+
+.h-row {
+  display: flex; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px solid #1e1e1e;
+  font-size: 13px;
+}
+
+.h-day { color: var(--gray); }
+.h-time { color: var(--white); font-weight: 500; }
+
+.contacts-socials {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.soc-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #222; background: transparent; color: var(--gray);
+  font-family: 'Barlow', sans-serif; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  transition: all 0.2s; white-space: nowrap;
+}
+
+.soc-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+.soc-link.tg:hover  { color: #29B5E8; border-color: #29B5E8; background: rgba(41,181,232,0.05); }
+.soc-link.wa:hover  { color: #25D366; border-color: #25D366; background: rgba(37,211,102,0.05); }
+.soc-link.vk:hover  { color: #4C75A3; border-color: #4C75A3; background: rgba(76,117,163,0.05); }
+
+.map-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #222; background: transparent; color: var(--gray);
+  font-family: 'Barlow', sans-serif; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  transition: all 0.2s;
+}
+
+.map-btn:hover { border-color: var(--gray); color: var(--white); }
+
+/* ══ FOOTER ══ */
+.footer-copy {
+  padding: 18px 40px;
+  background: var(--black);
+  border-top: 1px solid #1a1a1a;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; color: var(--gray2); letter-spacing: 1px;
+}
+
+/* ══ SCROLLBAR ══ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: #7d1a12; }
+
+/* ══ MOBILE HEADER ══ */
+.m-header {
+  display: none; position: fixed;
+  top: 0; left: 0; right: 0; height: 56px;
+  background: rgba(10,10,10,0.97);
+  border-bottom: 1px solid #1e1e1e;
+  z-index: 200; padding: 0 16px;
+  align-items: center; justify-content: space-between;
+}
+
+.m-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 800; letter-spacing: 3px;
+}
+
+.m-logo em { color: var(--amber); font-style: normal; }
+
+.m-actions { display: flex; gap: 8px; align-items: center; }
+
+.m-btn-book {
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  padding: 8px 12px; border: none; cursor: pointer;
+}
+
+.hamburger {
+  background: none; border: none; cursor: pointer;
+  padding: 10px; display: flex; flex-direction: column; gap: 5px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: .3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.m-nav {
+  display: none; position: fixed;
+  top: 56px; left: 0; right: 0;
+  background: #080808; border-bottom: 1px solid #1e1e1e;
+  z-index: 199;
+}
+
+.m-nav.open { display: block; }
+
+.m-nav a {
+  display: block; padding: 12px 20px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); border-left: 2px solid transparent; transition: all 0.2s;
+}
+
+.m-nav a:hover { color: var(--white); border-left-color: var(--amber); }
+
+/* ══ RESPONSIVE 1100px ══ */
+@media (max-width: 1100px) {
+  :root { --sidebar-w: 210px; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══ RESPONSIVE 900px ══ */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .m-header { display: flex; }
+  .main { margin-left: 0; }
+  .topbar { display: none; }
+  section { padding: 52px 20px; }
+  .hero { padding: 52px 20px 60px; min-height: auto; }
+  .hero-num { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .booking-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .contacts-grid { grid-template-columns: 1fr; }
+  .footer-copy { flex-direction: column; gap: 6px; text-align: center; }
+  .hero-stats { flex-wrap: wrap; justify-content: center; }
+  .hero-stat { padding: 0 24px; }
+  .hero-stat:first-child { padding-left: 24px; }
+}
+
+/* ══ RESPONSIVE 600px ══ */
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .neon-main { font-size: 60px; letter-spacing: 5px; }
+  .calc-items { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="brand">MENS<em>.</em>CLUB</div>
+    <div class="tagline">Барбершоп · Воронеж</div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#services"><span class="nav-icon">✂</span>Услуги и цены</a>
+    <a href="#calculator"><span class="nav-icon">◈</span>Калькулятор</a>
+    <a href="#team"><span class="nav-icon">◎</span>Наша команда</a>
+    <a href="#booking"><span class="nav-icon">◉</span>Запись</a>
+    <a href="#products"><span class="nav-icon">◆</span>Товары</a>
+    <a href="#contacts"><span class="nav-icon">◎</span>Контакты</a>
+  </nav>
+
+  <div class="sidebar-socials">
+    <a href="https://t.me/free_cloude" target="_blank" rel="noopener" class="soc-btn tg" title="Telegram">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+    <a href="https://wa.me/74733003737" target="_blank" rel="noopener" class="soc-btn wa" title="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+    <a href="https://vk.com/XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn vk" title="ВКонтакте">
+      <svg viewBox="0 0 24 24"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.713-1.033-1.01-1.49-1.144-1.744-1.144-.356 0-.458.101-.458.593v1.564c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.101-.491.593-.491h1.744c.44 0 .61.203.779.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.101.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.169.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.49-.085.745-.576.745z"/></svg>
+    </a>
+  </div>
+
+  <div class="sidebar-hours">
+    <div class="h-label">Режим работы</div>
+    <div class="h-val">Пн — Пт: 10:00 — 21:00</div>
+    <div class="h-val">Сб — Вс: 10:00 — 20:00</div>
+  </div>
+</aside>
+
+<!-- ══ MOBILE ══ -->
+<header class="m-header">
+  <button class="hamburger" id="hamburger" aria-label="Меню" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="m-logo">MENS<em>.</em>CLUB</div>
+  <a href="https://t.me/free_cloude" target="_blank" rel="noopener" class="m-btn-book">Записаться</a>
+</header>
+
+<nav class="m-nav" id="mobileNav">
+  <a href="#services" onclick="closeNav()">Услуги и цены</a>
+  <a href="#calculator" onclick="closeNav()">Калькулятор</a>
+  <a href="#team" onclick="closeNav()">Команда</a>
+  <a href="#booking" onclick="closeNav()">Запись</a>
+  <a href="#products" onclick="closeNav()">Товары</a>
+  <a href="#contacts" onclick="closeNav()">Контакты</a>
+  <a href="tel:+74733003737" onclick="closeNav()">+7 (473) 300-37-37</a>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">Барбершоп <em>·</em> Воронеж, Красноармейская</div>
+    <div class="topbar-actions">
+      <a href="tel:+74733003737" class="btn-call">
+        <span class="dot"></span>+7 473 300-37-37
+      </a>
+      <a href="https://t.me/free_cloude" target="_blank" rel="noopener" class="btn-book">
+        › Записаться
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none;">
+    <div class="hero-bg"></div>
+    <div class="hero-num">MC</div>
+    <div class="hero-content">
+      <div class="neon-sign">
+        <div class="neon-top">Men's Club &amp;</div>
+        <div class="neon-main">BARBER</div>
+        <div class="neon-bottom">— SHOP —</div>
+      </div>
+      <p class="hero-desc">
+        Мужские стрижки, бритьё и уход. Опытные барберы,<br>
+        атмосфера настоящего мужского клуба.
+      </p>
+      <div class="hero-cta-wrap">
+        <a href="https://t.me/free_cloude" target="_blank" rel="noopener" class="btn-hero">
+          › Записаться онлайн
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-n">5+</span>
+          <span class="stat-l">лет работы</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-n">4</span>
+          <span class="stat-l">мастера</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-n">1000+</span>
+          <span class="stat-l">довольных клиентов</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section id="services">
+    <div class="s-label">Прайс-лист</div>
+    <h2 class="s-title">Услуги и цены</h2>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-name">Мужская стрижка</div>
+        <div class="svc-desc">Классическая стрижка с мытьём головы</div>
+        <div class="svc-meta">
+          <div class="svc-price">800 ₽</div>
+          <div class="svc-time">45 мин</div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-name">Стрижка + борода</div>
+        <div class="svc-desc">Комплекс — стрижка и оформление бороды</div>
+        <div class="svc-meta">
+          <div class="svc-price">1 200 ₽</div>
+          <div class="svc-time">70 мин</div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-name">Оформление бороды</div>
+        <div class="svc-desc">Моделирование и выравнивание бороды</div>
+        <div class="svc-meta">
+          <div class="svc-price">500 ₽</div>
+          <div class="svc-time">30 мин</div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-name">Бритьё опасной бритвой</div>
+        <div class="svc-desc">Горячее полотенце, пена, классическое бритьё</div>
+        <div class="svc-meta">
+          <div class="svc-price">700 ₽</div>
+          <div class="svc-time">40 мин</div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-name">Детская стрижка</div>
+        <div class="svc-desc">До 12 лет, с мытьём головы</div>
+        <div class="svc-meta">
+          <div class="svc-price">600 ₽</div>
+          <div class="svc-time">40 мин</div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-name">Камуфляж седины</div>
+        <div class="svc-desc">Тонирование для естественного результата</div>
+        <div class="svc-meta">
+          <div class="svc-price">900 ₽</div>
+          <div class="svc-time">50 мин</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КАЛЬКУЛЯТОР -->
+  <section id="calculator">
+    <div class="s-label">Подбери услуги</div>
+    <h2 class="s-title">Калькулятор стоимости</h2>
+    <div class="calc-box">
+      <div class="calc-items" id="calcItems">
+        <div class="calc-item" data-price="800" onclick="toggleCalc(this)">
+          <div class="calc-check">✓</div>
+          <div class="calc-item-name">Мужская стрижка</div>
+          <div class="calc-item-price">800 ₽</div>
+        </div>
+        <div class="calc-item" data-price="500" onclick="toggleCalc(this)">
+          <div class="calc-check">✓</div>
+          <div class="calc-item-name">Оформление бороды</div>
+          <div class="calc-item-price">500 ₽</div>
+        </div>
+        <div class="calc-item" data-price="700" onclick="toggleCalc(this)">
+          <div class="calc-check">✓</div>
+          <div class="calc-item-name">Бритьё опасной бритвой</div>
+          <div class="calc-item-price">700 ₽</div>
+        </div>
+        <div class="calc-item" data-price="600" onclick="toggleCalc(this)">
+          <div class="calc-check">✓</div>
+          <div class="calc-item-name">Детская стрижка</div>
+          <div class="calc-item-price">600 ₽</div>
+        </div>
+        <div class="calc-item" data-price="900" onclick="toggleCalc(this)">
+          <div class="calc-check">✓</div>
+          <div class="calc-item-name">Камуфляж седины</div>
+          <div class="calc-item-price">900 ₽</div>
+        </div>
+        <div class="calc-item" data-price="400" onclick="toggleCalc(this)">
+          <div class="calc-check">✓</div>
+          <div class="calc-item-name">Мытьё головы</div>
+          <div class="calc-item-price">400 ₽</div>
+        </div>
+      </div>
+      <div class="calc-total">
+        <div class="calc-total-label">Итого к оплате</div>
+        <div class="calc-total-sum" id="calcSum">0 <span>₽</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОМАНДА -->
+  <section id="team">
+    <div class="s-label">Профессионалы</div>
+    <h2 class="s-title">Наша команда</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <!-- Замените на: <img src="alex.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+          <div class="team-photo-icon">✂</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Александр</div>
+          <div class="team-role">Старший барбер</div>
+          <div class="team-exp">› Опыт 7 лет</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-photo-icon">✂</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Максим</div>
+          <div class="team-role">Барбер</div>
+          <div class="team-exp">› Опыт 4 года</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-photo-icon">✂</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Дмитрий</div>
+          <div class="team-role">Барбер</div>
+          <div class="team-exp">› Опыт 3 года</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-photo-icon">✂</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Виктор</div>
+          <div class="team-role">Барбер</div>
+          <div class="team-exp">› Опыт 2 года</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЗАПИСЬ -->
+  <section id="booking">
+    <div class="s-label">Онлайн-запись</div>
+    <h2 class="s-title">Выбери время</h2>
+    <div class="booking-grid">
+      <div class="booking-col">
+        <div class="booking-col-title">Выбери мастера</div>
+        <div class="master-grid">
+          <button class="master-btn-sel active" onclick="selectMaster(this)">Александр</button>
+          <button class="master-btn-sel" onclick="selectMaster(this)">Максим</button>
+          <button class="master-btn-sel" onclick="selectMaster(this)">Дмитрий</button>
+          <button class="master-btn-sel" onclick="selectMaster(this)">Виктор</button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Выбери услугу</label>
+          <select class="form-input">
+            <option value="">— Выбери услугу —</option>
+            <option>Мужская стрижка — 800 ₽</option>
+            <option>Стрижка + борода — 1 200 ₽</option>
+            <option>Оформление бороды — 500 ₽</option>
+            <option>Бритьё опасной бритвой — 700 ₽</option>
+            <option>Детская стрижка — 600 ₽</option>
+            <option>Камуфляж седины — 900 ₽</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Дата</label>
+          <input type="date" class="form-input" id="bookDate">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Свободное время</label>
+          <div class="time-slots">
+            <div class="time-slot" onclick="selectTime(this)">10:00</div>
+            <div class="time-slot" onclick="selectTime(this)">10:45</div>
+            <div class="time-slot taken">11:30</div>
+            <div class="time-slot" onclick="selectTime(this)">12:15</div>
+            <div class="time-slot taken">13:00</div>
+            <div class="time-slot" onclick="selectTime(this)">13:45</div>
+            <div class="time-slot" onclick="selectTime(this)">14:30</div>
+            <div class="time-slot taken">15:15</div>
+            <div class="time-slot" onclick="selectTime(this)">16:00</div>
+            <div class="time-slot" onclick="selectTime(this)">16:45</div>
+            <div class="time-slot taken">17:30</div>
+            <div class="time-slot" onclick="selectTime(this)">18:15</div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-col">
+        <div class="booking-col-title">Твои данные</div>
+        <div class="form-group">
+          <label class="form-label">Имя</label>
+          <input type="text" class="form-input" placeholder="Как тебя зовут">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Телефон</label>
+          <input type="tel" class="form-input" placeholder="+7(___) ___-__-__">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Комментарий</label>
+          <textarea class="form-input" rows="4" style="resize:none;" placeholder="Пожелания к стрижке..."></textarea>
+        </div>
+        <a href="https://t.me/free_cloude" target="_blank" rel="noopener" class="btn-submit">
+          › Подтвердить запись
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТОВАРЫ -->
+  <section id="products">
+    <div class="s-label">Для домашнего ухода</div>
+    <h2 class="s-title">Товары</h2>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-img">🧴</div>
+        <div class="prod-info">
+          <div class="prod-brand">American Crew</div>
+          <div class="prod-name">Помада для волос</div>
+          <div class="prod-price">850 ₽</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">🪒</div>
+        <div class="prod-info">
+          <div class="prod-brand">Proraso</div>
+          <div class="prod-name">Масло для бороды</div>
+          <div class="prod-price">1 200 ₽</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">✂️</div>
+        <div class="prod-info">
+          <div class="prod-brand">Wahl</div>
+          <div class="prod-name">Триммер для бороды</div>
+          <div class="prod-price">3 500 ₽</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">🧼</div>
+        <div class="prod-info">
+          <div class="prod-brand">Depot</div>
+          <div class="prod-name">Шампунь для волос</div>
+          <div class="prod-price">650 ₽</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section id="contacts">
+    <div class="s-label">Где нас найти</div>
+    <h2 class="s-title">Контакты</h2>
+    <div class="contacts-grid">
+      <div class="contacts-col">
+        <div class="c-label">Адрес</div>
+        <div class="c-city">Воронеж</div>
+        <div class="c-street">ул. Красноармейская, 17</div>
+        <div class="c-label">Телефон</div>
+        <a href="tel:+74733003737" class="c-phone">+7 473 300-37-37</a>
+      </div>
+      <div class="contacts-col">
+        <div class="c-label">Режим работы</div>
+        <div class="hours-list">
+          <div class="h-row">
+            <span class="h-day">Понедельник — Пятница</span>
+            <span class="h-time">10:00 — 21:00</span>
+          </div>
+          <div class="h-row">
+            <span class="h-day">Суббота — Воскресенье</span>
+            <span class="h-time">10:00 — 20:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+      <a href="https://yandex.ru/maps/?text=%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%2C+%D1%83%D0%BB.+%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B0%D1%80%D0%BC%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F+17" target="_blank" rel="noopener" class="map-btn">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor"><path d="M7 1C4.8 1 3 2.8 3 5c0 3.2 4 8 4 8s4-4.8 4-8c0-2.2-1.8-4-4-4zm0 5.5c-.8 0-1.5-.7-1.5-1.5S6.2 3.5 7 3.5 8.5 4.2 8.5 5 7.8 6.5 7 6.5z"/></svg>
+        Открыть на карте
+      </a>
+      <a href="https://t.me/free_cloude" target="_blank" rel="noopener" class="soc-link tg">
+        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </a>
+      <a href="https://wa.me/74733003737" target="_blank" rel="noopener" class="soc-link wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://vk.com/XXXXXXXXX" target="_blank" rel="noopener" class="soc-link vk">
+        <svg viewBox="0 0 24 24"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.713-1.033-1.01-1.49-1.144-1.744-1.144-.356 0-.458.101-.458.593v1.564c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.101-.491.593-.491h1.744c.44 0 .61.203.779.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.101.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.169.508.271.508.22 0 .407-.136.813-.542 1.253-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.49-.085.745-.576.745z"/></svg>
+        ВКонтакте
+      </a>
+    </div>
+  </section>
+
+  <div class="footer-copy">
+    <span>MENS.CLUB © 2025</span>
+    <span>Барбершоп · Воронеж</span>
+  </div>
+
+</div><!-- /.main -->
+
+<script>
+  // ── Глобальные функции (доступны из onclick атрибутов) ──
+
+  function toggleNav() {
+    var nav = document.getElementById('mobileNav');
+    var btn = document.getElementById('hamburger');
+    if (!nav || !btn) return;
+    var isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+  }
+
+  function closeNav() {
+    var nav = document.getElementById('mobileNav');
+    var btn = document.getElementById('hamburger');
+    if (nav) nav.classList.remove('open');
+    if (btn) btn.classList.remove('open');
+  }
+
+  function toggleCalc(el) {
+    el.classList.toggle('selected');
+    var t = 0;
+    document.querySelectorAll('.calc-item.selected').forEach(function(e) {
+      t += parseInt(e.dataset.price, 10) || 0;
+    });
+    var sum = document.getElementById('calcSum');
+    if (sum) sum.innerHTML = t.toLocaleString('ru') + ' <span>&#8381;</span>';
+  }
+
+  function selectMaster(btn) {
+    document.querySelectorAll('.master-btn-sel').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+  }
+
+  function selectTime(slot) {
+    if (slot.classList.contains('taken')) return;
+    document.querySelectorAll('.time-slot').forEach(function(s) {
+      s.classList.remove('active');
+    });
+    slot.classList.add('active');
+  }
+
+  // ── Инициализация после загрузки DOM ──
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var dateInput = document.getElementById('bookDate');
+    if (dateInput) {
+      try { dateInput.value = new Date().toISOString().split('T')[0]; } catch(e) {}
+    }
+
+    document.addEventListener('click', function(e) {
+      var nav = document.getElementById('mobileNav');
+      var btn = document.getElementById('hamburger');
+      if (!nav || !btn) return;
+      if (!nav.contains(e.target) && !btn.contains(e.target)) closeNav();
+    });
+
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.sidebar-nav a');
+    if (sections.length && navLinks.length && 'IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function(link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            });
+          }
+        });
+      }, { threshold: 0.25 });
+      sections.forEach(function(s) { obs.observe(s); });
+    }
+  });
+</script>
+</body>
+</html>
