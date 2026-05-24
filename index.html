@@ -822,6 +822,60 @@ section { padding: 60px 40px; border-top: 1px solid #1a1a1a; }
   .hero-stat:first-child { padding-left: 24px; }
 }
 
+/* ══ REVIEWS ══ */
+.reviews-track {
+  display: flex; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 12px; cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.reviews-track::-webkit-scrollbar { display: none; }
+
+.review-card {
+  flex: 0 0 300px; scroll-snap-align: start;
+  background: var(--black2); border: 1px solid #1e1e1e;
+  padding: 20px; display: flex; flex-direction: column; gap: 12px;
+}
+
+.review-head { display: flex; align-items: center; gap: 12px; }
+
+.review-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(245,166,35,0.15); border: 1px solid rgba(245,166,35,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700; color: var(--amber);
+  flex-shrink: 0;
+}
+
+.review-meta { display: flex; flex-direction: column; gap: 3px; }
+
+.review-name {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white);
+}
+
+.review-stars-date { display: flex; align-items: center; gap: 7px; }
+
+.review-stars { color: var(--amber); font-size: 11px; letter-spacing: 1px; }
+
+.review-date {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--gray);
+}
+
+.review-text {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); line-height: 1.7;
+}
+
 /* ══ RESPONSIVE 600px ══ */
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
@@ -845,6 +899,7 @@ section { padding: 60px 40px; border-top: 1px solid #1a1a1a; }
     <a href="#services"><span class="nav-icon">✂</span>Услуги и цены</a>
     <a href="#calculator"><span class="nav-icon">◈</span>Калькулятор</a>
     <a href="#team"><span class="nav-icon">◎</span>Наша команда</a>
+    <a href="#reviews"><span class="nav-icon">★</span>Отзывы</a>
     <a href="#booking"><span class="nav-icon">◉</span>Запись</a>
     <a href="#products"><span class="nav-icon">◆</span>Товары</a>
     <a href="#contacts"><span class="nav-icon">◎</span>Контакты</a>
@@ -882,6 +937,7 @@ section { padding: 60px 40px; border-top: 1px solid #1a1a1a; }
   <a href="#services" onclick="closeNav()">Услуги и цены</a>
   <a href="#calculator" onclick="closeNav()">Калькулятор</a>
   <a href="#team" onclick="closeNav()">Команда</a>
+  <a href="#reviews" onclick="closeNav()">Отзывы</a>
   <a href="#booking" onclick="closeNav()">Запись</a>
   <a href="#products" onclick="closeNav()">Товары</a>
   <a href="#contacts" onclick="closeNav()">Контакты</a>
@@ -1086,6 +1142,85 @@ section { padding: 60px 40px; border-top: 1px solid #1a1a1a; }
           <div class="team-exp">› Опыт 2 года</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section id="reviews">
+    <div class="s-label">Яндекс Карты</div>
+    <h2 class="s-title">Отзывы клиентов</h2>
+    <div class="reviews-track" id="reviewsTrack">
+
+      <div class="review-card">
+        <div class="review-head">
+          <div class="review-avatar">Н</div>
+          <div class="review-meta">
+            <div class="review-name">Никита</div>
+            <div class="review-stars-date">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">25 янв 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-text">без лишних слов, Дима лучший в городе!</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-head">
+          <div class="review-avatar">А</div>
+          <div class="review-meta">
+            <div class="review-name">Анна</div>
+            <div class="review-stars-date">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">12 дек 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-text">Сын доволен стрижкой, стильно, модно, круто получается. Спасибо огромное за высокий профессионализм.</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-head">
+          <div class="review-avatar">Р</div>
+          <div class="review-meta">
+            <div class="review-name">Руслан</div>
+            <div class="review-stars-date">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">19 окт 2024</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-text">Всё быстро и качественно! Диме огромное спасибо 🙏🙏🙏</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-head">
+          <div class="review-avatar">Д</div>
+          <div class="review-meta">
+            <div class="review-name">Дмитрий</div>
+            <div class="review-stars-date">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">22 авг 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-text">Лучший барбер 😎</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-head">
+          <div class="review-avatar">С</div>
+          <div class="review-meta">
+            <div class="review-name">Семен</div>
+            <div class="review-stars-date">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">2 окт 2023</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-text">мастер своего дела, хороший человек! профессиональный подход к работе!</div>
+      </div>
+
     </div>
   </section>
 
@@ -1297,6 +1432,24 @@ section { padding: 60px 40px; border-top: 1px solid #1a1a1a; }
   // ── Инициализация после загрузки DOM ──
 
   document.addEventListener('DOMContentLoaded', function() {
+    // Drag scroll для слайдера отзывов
+    var track = document.getElementById('reviewsTrack');
+    if (track) {
+      var isDown = false, startX, scrollLeft;
+      track.addEventListener('mousedown', function(e) {
+        isDown = true; track.style.cursor = 'grabbing';
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+      track.addEventListener('mouseleave', function() { isDown = false; track.style.cursor = 'grab'; });
+      track.addEventListener('mouseup', function() { isDown = false; track.style.cursor = 'grab'; });
+      track.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - track.offsetLeft;
+        track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+      });
+    }
     var dateInput = document.getElementById('bookDate');
     if (dateInput) {
       try { dateInput.value = new Date().toISOString().split('T')[0]; } catch(e) {}
